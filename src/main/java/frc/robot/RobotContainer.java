@@ -20,7 +20,8 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   
-    Joy joy = new Joy(0);
+   Joy joy = new Joy(0);
+   
   // The robot's subsystems and commands are defined here...
   //private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
