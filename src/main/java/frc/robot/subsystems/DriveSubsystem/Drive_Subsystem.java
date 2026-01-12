@@ -35,4 +35,9 @@ SparkMaxConfig config2 = new SparkMaxConfig();
   @Override
   public void periodic() {
   }
+
+public void set(double axis, double axis2) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'set'");
+}
 }

@@ -31,4 +31,9 @@ public double getYaw() {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+public void setPitch(int i) {
+   
+    throw new UnsupportedOperationException("Unimplemented method 'setPitch'");
+}
 }
