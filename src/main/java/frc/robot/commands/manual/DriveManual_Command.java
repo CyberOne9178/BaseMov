@@ -4,20 +4,30 @@
 
 package frc.robot.commands.manual;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.DriveSubsystem.Drive_Subsystem;
+import frc.robot.subsystems.DriveSubsystem.Pigeon;
+
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class DriveManual_Command extends Command {
-  /** Creates a new DriveManual_Command. */
-  public DriveManual_Command() {
-    // Use addRequirements() here to declare subsystem dependencies.
+
+  Drive_Subsystem drive;
+  Pigeon pigeon = new Pigeon();
+  Joy joy;
+  PIDController pid = new PIDController(0.1, 0.001, 0);
+
+  public DriveManual_Command(Drive_Subsystem drive, Joy joy) {
+    this.drive = drive;
+    this.joy = joy;
+    addRequirements(drive);
   }
 
-  // Called when the command is initially scheduled.
+
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {}
 
