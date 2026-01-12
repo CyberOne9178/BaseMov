@@ -9,9 +9,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Joy;
 import frc.robot.subsystems.DriveSubsystem.Drive_Subsystem;
 import frc.robot.subsystems.DriveSubsystem.Pigeon;
+import frc.robot.subsystems.DriveSubsystem.modo;
 
 public class DriveManual_Command extends Command {
-
+ 
+     double reto;
+    double rotacao;
+  
+  private final modo troca = new modo();
   private final Drive_Subsystem drive;
   private final Joy joy;
   private final Pigeon pigeon = new Pigeon();
@@ -33,27 +38,44 @@ public class DriveManual_Command extends Command {
   @Override
   public void execute() {
 
-    double reto = joy.axis(1);
-    double virar = joy.axis(2);
+
+    if(troca.getmodo() == "reto"){
+      reto = joy.axis(1);
+     rotacao = joy.axis(2);
+     
+    } else {
+      reto = -joy.axis(1);
+     rotacao = -joy.axis(2);
+    }
+    
 
     double pidOutput = pid.calculate(pigeon.getYaw());
 
-if (pigeon.getPitch() > 8 ) {
+// PITCH CORRECTION:
 
-  drive.set(reto * 0.5, virar * 0.5);
+    double angulo = pigeon.getPitch();
 
+    double correcao = 1 - (angulo - 5 / 15 );
+
+if (pigeon.getPitch() <= 20 ) {
+   
+  drive.set(reto * correcao, rotacao * correcao);
+  
     }
      else
      
-    if (Math.abs(virar) > 0.08) {
+    if (Math.abs(rotacao) > 0.08) {
       pid.setSetpoint(pigeon.getYaw());
-      drive.set(reto, virar);
+      
+      drive.set(reto, rotacao);
     } 
     else {
      
       drive.set(reto, pidOutput);
     }
   }
+
+
 
   @Override
   public void end(boolean interrupted) {}
