@@ -43,4 +43,5 @@ SmartDashboard.putNumber("MiniNeo/ Voltage", suc.getBusVoltage());
 
 
   }
+
 }
