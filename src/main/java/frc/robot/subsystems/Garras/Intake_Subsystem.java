@@ -8,30 +8,36 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkMax;
 
 public class Intake_Subsystem extends SubsystemBase {
 
   final SparkMax itk;
-
-  
-  double pocicao;
+  final RelativeEncoder itkEncoder;
   
   public Intake_Subsystem() {
     itk = new SparkMax(5, MotorType.kBrushless);
+    itkEncoder = itk.getEncoder();
 
-    pocicao = itk.getEncoder().getPosition();
-
+    itkEncoder.setPosition(0);
+    
   }
-public void set(double POTENCIA_ITK) {
-  itk.set(POTENCIA_ITK);
+
+public void set(double forca) {
+  itk.set(forca);
 }
+public double getEncoderDegrees() {
+    return itkEncoder.getPosition();
+}
+
 
 
 
   @Override
   public void periodic() {
    SmartDashboard.putNumber("Intake/Intake Voltage", itk.getBusVoltage());
+   SmartDashboard.putNumber("Itk/Itk Encoder", itk.getEncoder().getPosition());
     SmartDashboard.putNumber("Intake/Intake Temperature", itk.getMotorTemperature());
     SmartDashboard.putString("Intake/Intake Error", itk.getLastError().toString());
 

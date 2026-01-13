@@ -1,29 +1,31 @@
 package frc.robot.commands.manual;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Joy;
 import frc.robot.subsystems.Garras.Intake_Subsystem;
 
 public class IntakeManual_Command extends Command {
 
+  PIDController PID = new PIDController(0, 0, 0);
   private final Intake_Subsystem itk;
-  private final Joy joy = new Joy(0); // joystick porta 0
+  private final Joystick joy;
+   
 
-  public IntakeManual_Command(Intake_Subsystem itk) {
+  public IntakeManual_Command(Intake_Subsystem itk, Joystick joy) {
     this.itk = itk;
+    this.joy = joy;
     addRequirements(itk);
+
+    PID.setSetpoint(itk.getEncoderDegrees());
   }
 
   @Override
   public void execute() {
 
-
-    if (joy.getRawButton(1)) {
-      itk.set(0.3);   
-    } else {
-      itk.set(0);    
-    }
+       itk.set(joy.getRawButton(1) ? -0.7 : 0.0);
   }
+
 
   @Override
   public void end(boolean interrupted) {
