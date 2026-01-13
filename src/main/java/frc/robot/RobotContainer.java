@@ -7,8 +7,10 @@ package frc.robot;
 //import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.modo_command;
 import frc.robot.commands.manual.IntakeManual_Command;
+import frc.robot.commands.manual.Shooters_Command;
 import frc.robot.commands.manual.SucManual_Commandd;
 import frc.robot.subsystems.Garras.Intake_Subsystem;
+import frc.robot.subsystems.Garras.Shooters_Subsystem;
 import frc.robot.subsystems.Garras.Suc_Subsystem;
 //import edu.wpi.first.wpilibj.Joystick;
 //import frc.robot.commands.Autos;
@@ -21,7 +23,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
 
-
 public class RobotContainer {
   
    Joy joy = new Joy(0);
@@ -29,6 +30,7 @@ public class RobotContainer {
 
    Intake_Subsystem itk = new Intake_Subsystem();
    Suc_Subsystem suc = new Suc_Subsystem();
+  Shooters_Subsystem shooterEsquerda = new Shooters_Subsystem();
 
   public RobotContainer() {
  
@@ -41,11 +43,14 @@ public class RobotContainer {
    new JoystickButton(joy.getJoystick(),1).toggleOnTrue(new modo_command());
    
 // intake
-   new JoystickButton(joy.getJoystick(),1).toggleOnTrue(new IntakeManual_Command(itk, joy.getJoystick()));
+   new JoystickButton(joy2.getJoystick(),1).toggleOnTrue(new IntakeManual_Command(itk, joy.getJoystick()));
  
   // sistema de sucção
-   new JoystickButton(joy.getJoystick(),2).toggleOnTrue(new SucManual_Commandd(suc, joy.getJoystick()));
-  }
+  new JoystickButton(joy2.getJoystick(),2).toggleOnTrue(new SucManual_Commandd(suc, joy.getJoystick()));
+  
+// shooters
+new JoystickButton(joy2.getJoystick(),2).toggleOnTrue(new Shooters_Command(shooterEsquerda, joy.getJoystick()));
+}
 
 
   

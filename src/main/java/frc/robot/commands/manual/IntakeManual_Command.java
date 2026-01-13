@@ -9,12 +9,12 @@ public class IntakeManual_Command extends Command {
 
   PIDController PID = new PIDController(0, 0, 0);
   private final Intake_Subsystem itk;
-  private final Joystick joy;
+  private final Joystick joy2;
    
 
-  public IntakeManual_Command(Intake_Subsystem itk, Joystick joy) {
+  public IntakeManual_Command(Intake_Subsystem itk, Joystick joy2) {
     this.itk = itk;
-    this.joy = joy;
+    this.joy2 = joy2;
     addRequirements(itk);
 
     PID.setSetpoint(itk.getEncoderDegrees());
@@ -23,7 +23,7 @@ public class IntakeManual_Command extends Command {
   @Override
   public void execute() {
 
-       itk.set(joy.getRawButton(1) ? -0.7 : 0.0);
+       itk.set(joy2.getRawButton(1) ? -0.7 : 0.0);
   }
 
 

@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj.Joystick;
 public class SucManual_Commandd extends Command {
 
   private final Suc_Subsystem suc;
-  private final Joystick joy;
+  private final Joystick joy2;
 
-  public SucManual_Commandd(Suc_Subsystem suc, Joystick joy) {
+  public SucManual_Commandd(Suc_Subsystem suc, Joystick joy2) {
     this.suc = suc;
-    this.joy = joy;
+    this.joy2 = joy2;
 
     addRequirements(suc);
   }
@@ -26,7 +26,7 @@ public class SucManual_Commandd extends Command {
 
   @Override
   public void execute() {
-    suc.set(joy.getRawButton(2) ? -0.7 : 0.0);
+    suc.set(joy2.getRawButton(2) ? -0.7 : 0.0);
   }
 
   @Override
