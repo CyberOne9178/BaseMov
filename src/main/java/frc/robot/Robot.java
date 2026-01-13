@@ -8,15 +8,13 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Hub_ID;
-import frc.robot.subsystems.Led;
+
 
 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
- Led LED = new Led();
-  String ativo;
+
 
   public Robot() {
     new RobotContainer();
@@ -30,19 +28,7 @@ public class Robot extends TimedRobot {
 
     CommandScheduler.getInstance().run();
 
-    // chama métodos static da forma correta
-    Hub_ID.logToDashboard();
-
-    if (Hub_ID.isAllianceHubActive()) {
-        ativo = "Lançar bolas";
-        LED.LED_RGB(225, 0, 0);
-    } else {
-        ativo = "Pegar bolas";
-        LED.LED_RGB(0, 225, 0);
-    }
-
-    SmartDashboard.putString("AÇÃO", ativo);
-}
+  }
 
 
   @Override

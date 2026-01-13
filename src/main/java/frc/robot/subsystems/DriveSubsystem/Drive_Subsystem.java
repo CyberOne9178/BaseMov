@@ -25,6 +25,7 @@ SparkMaxConfig config2 = new SparkMaxConfig();
 
   config1.follow(1);
   config2.follow(2);
+  
     for(int i = 0; i < arrayMovimento.length; i++ ) {
         arrayMovimento[i] = new SparkMax(i + 1, MotorType.kBrushed);
         }

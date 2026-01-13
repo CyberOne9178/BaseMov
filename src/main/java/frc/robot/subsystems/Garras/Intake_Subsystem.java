@@ -39,8 +39,7 @@ public double getEncoderDegrees() {
    SmartDashboard.putNumber("Intake/Intake Voltage", itk.getBusVoltage());
    SmartDashboard.putNumber("Itk/Itk Encoder", itk.getEncoder().getPosition());
     SmartDashboard.putNumber("Intake/Intake Temperature", itk.getMotorTemperature());
-    SmartDashboard.putString("Intake/Intake Error", itk.getLastError().toString());
 
   }
 
-}
+  }

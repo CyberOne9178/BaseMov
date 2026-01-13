@@ -1,9 +1,9 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-
+//*
+// package frc.robot.subsystems.Garras;
 package frc.robot.subsystems.Garras;
-
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Suc_Subsystem extends SubsystemBase {
 
   final SparkMax suc; 
-  /** Creates a new Suc_Subsystem. */
+
   public Suc_Subsystem() {
 
     suc = new SparkMax(6, MotorType.kBrushless);
@@ -24,7 +24,9 @@ public class Suc_Subsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Intake/Intake Voltage", suc.getBusVoltage());
-    SmartDashboard.putNumber("Intake/Intake Temperature", suc.getMotorTemperature());
+    SmartDashboard.putNumber("Suc/Suc Voltage", suc.getBusVoltage());
+    SmartDashboard.putNumber("Suc/Suc Temperature", suc.getMotorTemperature());
+    SmartDashboard.putNumber("Suc/Suc Output", suc.getAppliedOutput());
+    
   }
 }
