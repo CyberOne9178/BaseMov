@@ -25,4 +25,8 @@ public class Joy {
   public double axis(int axis) {
     return joy.getRawAxis(axis);
   }
+
+public boolean getRawButton(int i) {
+    throw new UnsupportedOperationException("Unimplemented method 'getRawButton'");
+}
 }
